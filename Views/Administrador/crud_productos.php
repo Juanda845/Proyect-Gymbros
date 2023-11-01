@@ -31,7 +31,7 @@ $nombre = $_SESSION['nombre'];
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-        <a class="navbar-brand p-2" href="index_admin.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
+            <a class="navbar-brand p-2" href="index_admin.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -66,7 +66,7 @@ $nombre = $_SESSION['nombre'];
                         <h2 class="border border-2 border-dark rounded-4 p-2"><strong>CRUD - PRODUCTOS</strong></h2>
                     </div>
                     <div class="container-fluid mb-5">
-                        <a class="nav-link" href="#"><button type="button" class="btn btn-success mb-2">Nuevo registro <i class="fa-solid fa-file-circle-plus fa-lg" style="color: #ffffff;"></i></button></a>
+                        <a class="nav-link" href="../../Formularios/create_productos.php"><button type="button" class="btn btn-success mb-2">Nuevo registro <i class="fa-solid fa-file-circle-plus fa-lg" style="color: #ffffff;"></i></button></a>
                         <table id="table_responsive" class="table table-dark table-striped" style="width:100%">
                             <thead>
                                 <tr>
@@ -74,6 +74,7 @@ $nombre = $_SESSION['nombre'];
                                     <th scope="col">nombre</th>
                                     <th scope="col">descripcion</th>
                                     <th scope="col">precio</th>
+                                    <th scope="col">Imagen</th>
                                     <th scope="col">cantidad</th>
                                     <th scope="col">categoria</th>
                                     <th scope="col">proveedor</th>
@@ -82,7 +83,65 @@ $nombre = $_SESSION['nombre'];
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                require("../../Suministros/conexion.php");
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+                                    $productoId = $_POST['id'];
 
+                                    // Realiza una consulta para verificar el estado actual
+                                    $checkQuery = "SELECT estado FROM productos WHERE id = ?";
+                                    $checkStmt = $conexion->prepare($checkQuery);
+                                    $checkStmt->bind_param("i", $productoId);
+                                    $checkStmt->execute();
+                                    $checkStmt->bind_result($estadoActual);
+                                    $checkStmt->fetch();
+                                    $checkStmt->close();
+
+                                    if ($estadoActual == 1) {
+                                        // Si el estado es activo, cambia a inactivo
+                                        $updateQuery = "UPDATE productos SET estado = 2 WHERE id = ?";
+                                        $updateStmt = $conexion->prepare($updateQuery);
+                                        $updateStmt->bind_param("i", $productoId);
+
+                                        if ($updateStmt->execute()) {
+                                            echo json_encode(array("success" => true, "message" => "Estado cambiado con éxito."));
+                                        } else {
+                                            echo json_encode(array("success" => false, "message" => "Error al cambiar el estado."));
+                                        }
+                                    } else {
+                                        echo json_encode(array("success" => false, "message" => "Este producto ya está inactivo."));
+                                    }
+                                }
+
+                                $sql = $conexion->query(
+                                    "SELECT productos.id, productos.nombre, productos.precio, productos.cantidad, productos.imagen, 
+                                    categorias.nombre AS categoria, proveedores.nombre AS proveedor, parametros.valor AS estado, productos.descripcion
+                                    FROM productos
+                                    INNER JOIN categorias ON productos.categoria = categorias.id
+                                    INNER JOIN proveedores ON productos.proveedor = proveedores.id
+                                    INNER JOIN parametros ON productos.estado = parametros.id"
+                                );
+
+                                while ($resultado = $sql->fetch_assoc()) {
+                                ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $resultado['id'] ?></th>
+                                        <th><?php echo $resultado['nombre'] ?></th>
+                                        <th><?php echo $resultado['precio'] ?></th>
+                                        <th><?php echo $resultado['cantidad'] ?></th>
+                                        <th><img src="<?php echo $resultado['imagen']; ?>" alt="Imagen" width="100"></th>
+                                        <th><?php echo $resultado['categoria'] ?></th>
+                                        <th><?php echo $resultado['proveedor'] ?></th>
+                                        <th><?php echo $resultado['estado'] ?></th>
+                                        <th><?php echo $resultado['descripcion'] ?></th>
+                                        <th>
+                                            <a class="btn btn-warning" href="../../Formularios/update_productos.php?id=<?php echo $resultado['id'] ?>"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></a>
+                                            <button class="btn btn-danger <?php echo ($resultado['estado'] == 'inactivo') ? 'inactivo' : ''; ?>" data-id="<?php echo $resultado['id'] ?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
+                                        </th>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -104,6 +163,97 @@ $nombre = $_SESSION['nombre'];
                     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json" // Establecer el idioma a español
                 }
             });
+        });
+    </script>
+
+    <script>
+        <?php
+        if (isset($_GET['added']) && $_GET['added'] == 'true') {
+            echo 'Swal.fire({
+            title: "¡Éxito!",
+            text: "Producto agregado correctamente.",
+            icon: "success",
+            confirmButtonText: "OK"
+        }).then(function() {
+            // Elimina los parámetros de la URL
+            var cleanUrl = window.location.href.split("?")[0];
+            window.history.replaceState({}, document.title, cleanUrl);
+            location.reload(); // Recarga la página
+        });';
+        }
+        ?>
+    </script>
+
+    <script>
+        <?php
+        if (isset($_GET['edited']) && $_GET['edited'] == 'true') {
+            echo 'Swal.fire({
+            title: "¡Éxito!",
+            text: "Producto editado correctamente.",
+            icon: "success",
+            confirmButtonText: "OK"
+        }).then(function() {
+            // Elimina los parámetros de la URL
+            var cleanUrl = window.location.href.split("?")[0];
+            window.history.replaceState({}, document.title, cleanUrl);
+            location.reload(); // Recarga la página
+        });';
+        }
+        ?>
+    </script>
+
+    <script>
+        $(document).on('click', 'button.btn-danger', function() {
+            var productoId = $(this).data('id');
+            var isInactive = $(this).hasClass('inactivo');
+
+            // Verificar si el registro está inactivo
+            if (isInactive) {
+                mostrarErrorAlerta();
+            } else {
+                mostrarConfirmacionAlerta(productoId);
+            }
+
+            function mostrarErrorAlerta() {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Este producto ya está desactivado.',
+                    icon: 'error',
+                });
+            }
+
+            function mostrarConfirmacionAlerta(productoId) {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¿Quieres cambiar el estado de este producto?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí',
+                    cancelButtonText: 'No',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            data: {
+                                id: productoId
+                            }, // Envía el ID del producto
+                            success: function(response) {
+                                mostrarRegistroDesactivadoAlerta();
+                            },
+                        });
+                    }
+                });
+            }
+
+            function mostrarRegistroDesactivadoAlerta() {
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Registro desactivado correctamente.',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload(); // Recarga la página
+                });
+            }
         });
     </script>
 </body>

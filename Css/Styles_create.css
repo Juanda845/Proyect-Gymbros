@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-html{
+html {
     height: 100%;
 }
 
@@ -17,19 +17,24 @@ body {
 
 /* Agrega los estilos para el ícono del ojo */
 .password-toggle {
-    color: #888; /* Color gris */
-    transition: color 0.3s; /* Transición de color suave */
+    color: #888;
+    /* Color gris */
+    transition: color 0.3s;
+    /* Transición de color suave */
 }
 
 .password-toggle:hover {
-    color: #007bff; /* Color azul en el hover */
+    color: #007bff;
+    /* Color azul en el hover */
 }
 
 /* Agrega estilos para posicionar el ícono */
 .password-toggle {
     position: absolute;
-    top: 70%; /* Ajusta la posición vertical */
-    right: 10px; /* Ajusta la posición horizontal */
+    top: 70%;
+    /* Ajusta la posición vertical */
+    right: 10px;
+    /* Ajusta la posición horizontal */
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -37,4 +42,9 @@ body {
 /* Ajusta el tamaño del icono */
 .password-toggle.fa {
     font-size: 1.25em;
+}
+
+textarea {
+    resize: none;
+    height: 20px;
 }

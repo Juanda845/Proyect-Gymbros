@@ -31,7 +31,7 @@ $nombre = $_SESSION['nombre'];
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-        <a class="navbar-brand p-2" href="index_admin.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
+            <a class="navbar-brand p-2" href="index_admin.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -80,91 +80,91 @@ $nombre = $_SESSION['nombre'];
                                 </tr>
                             </thead>
                             <tbody>
-                                    <?php
-                                    // PHP: Consulta y procesamiento de datos
-                                    require("../../Suministros/conexion.php");
-                                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-                                        $proveedorId = $_POST['id'];
+                                <?php
+                                // PHP: Consulta y procesamiento de datos
+                                require("../../Suministros/conexion.php");
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+                                    $proveedorId = $_POST['id'];
 
-                                        // Realiza una consulta para verificar el estado actual
-                                        $checkQuery = "SELECT estado FROM proveedores WHERE id = ?";
-                                        $checkStmt = $conexion->prepare($checkQuery);
-                                        $checkStmt->bind_param("i", $proveedorId);
-                                        $checkStmt->execute();
-                                        $checkStmt->bind_result($estadoActual);
-                                        $checkStmt->fetch();
-                                        $checkStmt->close();
+                                    // Realiza una consulta para verificar el estado actual
+                                    $checkQuery = "SELECT estado FROM proveedores WHERE id = ?";
+                                    $checkStmt = $conexion->prepare($checkQuery);
+                                    $checkStmt->bind_param("i", $proveedorId);
+                                    $checkStmt->execute();
+                                    $checkStmt->bind_result($estadoActual);
+                                    $checkStmt->fetch();
+                                    $checkStmt->close();
 
-                                        if ($estadoActual == 1) {
-                                            // Si el estado es activo, cambia a inactivo
-                                            $updateQuery = "UPDATE proveedores SET estado = 2 WHERE id = ?";
-                                            $updateStmt = $conexion->prepare($updateQuery);
-                                            $updateStmt->bind_param("i", $proveedorId);
+                                    if ($estadoActual == 1) {
+                                        // Si el estado es activo, cambia a inactivo
+                                        $updateQuery = "UPDATE proveedores SET estado = 2 WHERE id = ?";
+                                        $updateStmt = $conexion->prepare($updateQuery);
+                                        $updateStmt->bind_param("i", $proveedorId);
 
-                                            if ($updateStmt->execute()) {
-                                                echo json_encode(array("success" => true, "message" => "Estado cambiado con éxito."));
-                                            } else {
-                                                echo json_encode(array("success" => false, "message" => "Error al cambiar el estado."));
-                                            }
+                                        if ($updateStmt->execute()) {
+                                            echo json_encode(array("success" => true, "message" => "Estado cambiado con éxito."));
                                         } else {
-                                            echo json_encode(array("success" => false, "message" => "Este registro ya está inactivo."));
+                                            echo json_encode(array("success" => false, "message" => "Error al cambiar el estado."));
                                         }
+                                    } else {
+                                        echo json_encode(array("success" => false, "message" => "Este registro ya está inactivo."));
                                     }
+                                }
 
-                                    $sql = $conexion->query(
-                                        "SELECT proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.telefono, proveedores.producto, parametros.valor AS estado
+                                $sql = $conexion->query(
+                                    "SELECT proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.telefono, proveedores.producto, parametros.valor AS estado
                                         FROM proveedores
                                         INNER JOIN parametros ON proveedores.estado = parametros.id
                                     "
-                                    );
-                                    while ($resultado = $sql->fetch_assoc()) {
-                                    ?>
-                                        <tr>
-                                            <!-- Datos de categoría en cada fila -->
-                                            <th scope="row"><?php echo $resultado['id'] ?></th>
-                                            <th><?php echo $resultado['nombre'] ?></th>
-                                            <th><?php echo $resultado['direccion'] ?></th>
-                                            <th><?php echo $resultado['telefono'] ?></th>
-                                            <th><?php echo $resultado['producto'] ?></th>
-                                            <th><?php echo $resultado['estado'] ?></th>
-                                            <th>
-                                                <!-- Botón para editar la categoría -->
-                                                <a class="btn btn-warning" href="../../Formularios/update_proveedores.php?id=<?php echo $resultado['id'] ?>"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></a>
-                                                <!-- Botón para cambiar el estado de la categoría -->
-                                                <button class="btn btn-danger <?php echo ($resultado['estado'] == 'inactivo') ? 'inactivo' : ''; ?>" data-id="<?php echo $resultado['id'] ?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
-                                            </th>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                );
+                                while ($resultado = $sql->fetch_assoc()) {
+                                ?>
+                                    <tr>
+                                        <!-- Datos de categoría en cada fila -->
+                                        <th scope="row"><?php echo $resultado['id'] ?></th>
+                                        <th><?php echo $resultado['nombre'] ?></th>
+                                        <th><?php echo $resultado['direccion'] ?></th>
+                                        <th><?php echo $resultado['telefono'] ?></th>
+                                        <th><?php echo $resultado['producto'] ?></th>
+                                        <th><?php echo $resultado['estado'] ?></th>
+                                        <th>
+                                            <!-- Botón para editar la categoría -->
+                                            <a class="btn btn-warning" href="../../Formularios/update_proveedores.php?id=<?php echo $resultado['id'] ?>"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></a>
+                                            <!-- Botón para cambiar el estado de la categoría -->
+                                            <button class="btn btn-danger <?php echo ($resultado['estado'] == 'inactivo') ? 'inactivo' : ''; ?>" data-id="<?php echo $resultado['id'] ?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
+                                        </th>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('#table_responsive').DataTable({
-                    "responsive": true, // Habilitar el modo responsive
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json" // Establecer el idioma a español
-                    }
-                });
+    <script>
+        $(document).ready(function() {
+            $('#table_responsive').DataTable({
+                "responsive": true, // Habilitar el modo responsive
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json" // Establecer el idioma a español
+                }
             });
-        </script>
+        });
+    </script>
 
-        <script>
-            <?php
-            if (isset($_GET['added']) && $_GET['added'] == 'true') {
-                echo 'Swal.fire({
+    <script>
+        <?php
+        if (isset($_GET['added']) && $_GET['added'] == 'true') {
+            echo 'Swal.fire({
             title: "¡Éxito!",
             text: "Proveedor agregado correctamente.",
             icon: "success",
@@ -175,14 +175,14 @@ $nombre = $_SESSION['nombre'];
             window.history.replaceState({}, document.title, cleanUrl);
             location.reload(); // Recarga la página
         });';
-            }
-            ?>
-        </script>
+        }
+        ?>
+    </script>
 
-        <script>
-            <?php
-            if (isset($_GET['edited']) && $_GET['edited'] == 'true') {
-                echo 'Swal.fire({
+    <script>
+        <?php
+        if (isset($_GET['edited']) && $_GET['edited'] == 'true') {
+            echo 'Swal.fire({
             title: "¡Éxito!",
             text: "Proveedor editado correctamente.",
             icon: "success",
@@ -193,64 +193,64 @@ $nombre = $_SESSION['nombre'];
             window.history.replaceState({}, document.title, cleanUrl);
             location.reload(); // Recarga la página
         });';
+        }
+        ?>
+    </script>
+
+    <script>
+        $(document).on('click', 'button.btn-danger', function() {
+            var proveedorId = $(this).data('id');
+            var isInactive = $(this).hasClass('inactivo');
+
+            // Verificar si el registro está inactivo
+            if (isInactive) {
+                mostrarErrorAlerta();
+            } else {
+                mostrarConfirmacionAlerta(proveedorId);
             }
-            ?>
-        </script>
 
-        <script>
-            $(document).on('click', 'button.btn-danger', function() {
-                var proveedorId = $(this).data('id');
-                var isInactive = $(this).hasClass('inactivo');
+            function mostrarErrorAlerta() {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Este registro ya está desactivado.',
+                    icon: 'error',
+                });
+            }
 
-                // Verificar si el registro está inactivo
-                if (isInactive) {
-                    mostrarErrorAlerta();
-                } else {
-                    mostrarConfirmacionAlerta(proveedorId);
-                }
+            function mostrarConfirmacionAlerta(proveedorId) {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¿Quieres cambiar el estado de este proveedor?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí',
+                    cancelButtonText: 'No',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            data: {
+                                id: proveedorId
+                            }, // Envía el ID de la proveddor
+                            success: function(response) {
+                                mostrarRegistroDesactivadoAlerta();
+                            },
+                        });
+                    }
+                });
+            }
 
-                function mostrarErrorAlerta() {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Este registro ya está desactivado.',
-                        icon: 'error',
-                    });
-                }
-
-                function mostrarConfirmacionAlerta(proveedorId) {
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: '¿Quieres cambiar el estado de este proveedor?',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Sí',
-                        cancelButtonText: 'No',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $.ajax({
-                                type: 'POST',
-                                data: {
-                                    id: proveedorId
-                                }, // Envía el ID de la proveddor
-                                success: function(response) {
-                                    mostrarRegistroDesactivadoAlerta();
-                                },
-                            });
-                        }
-                    });
-                }
-
-                function mostrarRegistroDesactivadoAlerta() {
-                    Swal.fire({
-                        title: '¡Éxito!',
-                        text: 'Registro desactivado correctamente.',
-                        icon: 'success',
-                    }).then(function() {
-                        location.reload(); // Recarga la página
-                    });
-                }
-            });
-        </script>
+            function mostrarRegistroDesactivadoAlerta() {
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Registro desactivado correctamente.',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload(); // Recarga la página
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
