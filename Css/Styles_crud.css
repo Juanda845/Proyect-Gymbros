@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.img-small {
+    max-width: 100px; /* Cambia el tamaño a tu preferencia */
+    height: auto;
+}

@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Agrega los estilos para el ícono del ojo */
+.password-toggle {
+    color: #888; /* Color gris */
+    transition: color 0.3s; /* Transición de color suave */
+}
+
+.password-toggle:hover {
+    color: #007bff; /* Color azul en el hover */
+}
+
+/* Agrega estilos para posicionar el ícono */
+.password-toggle {
+    position: absolute;
+    top: 70%; /* Ajusta la posición vertical */
+    right: 10px; /* Ajusta la posición horizontal */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Ajusta el tamaño del icono */
+.password-toggle.fa {
+    font-size: 1.25em;
+}

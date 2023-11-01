@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+
+body {
+    background-image: url('../Img/fondo_gym.jpg');
+    background-color: rgba(128, 128, 128, 0.7);
+    background-blend-mode: overlay;
+    background-size: cover; 
+    background-attachment: fixed; 
+}
+
+.image-logo{
+    width: 140px;
+    border-radius: 5%;
+}
+
+/* Agrega los estilos para el ícono del ojo */
+.password-toggle {
+    color: #888; /* Color gris */
+    transition: color 0.3s; /* Transición de color suave */
+}
+
+.password-toggle:hover {
+    color: #007bff; /* Color azul en el hover */
+}
+
+/* Agrega estilos para posicionar el ícono */
+.password-toggle {
+    position: absolute;
+    top: 50%; /* Ajusta la posición vertical */
+    right: 10px; /* Ajusta la posición horizontal */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Ajusta el tamaño del icono */
+.password-toggle.fa {
+    font-size: 1.25em;
+}
