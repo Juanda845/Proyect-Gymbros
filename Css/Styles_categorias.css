@@ -1,0 +1,55 @@
+/* Reset de márgenes y rellenos en todos los elementos */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Establecer el color de fondo del cuerpo del sitio web utilizando un degradado radial */
+.background {
+    background: rgb(237, 242, 250);
+    background: radial-gradient(circle, rgba(237, 242, 250, 1) 0%, rgba(237, 242, 250, 1) 50%, rgba(237, 242, 250, 1) 100%);
+}
+
+/* Estilos para el contenedor de la sección de productos */
+.product-list {
+    margin-top: 20px;
+}
+
+/* Estilos para la tarjeta de producto */
+.card-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el título del producto */
+.product-title {
+    font-size: 18px;
+}
+
+/* Estilos para la información del producto */
+.product-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la imagen del producto */
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para el botón de agregar al carrito */
+.add-to-cart-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos cuando el cursor está sobre el botón de agregar al carrito */
+.add-to-cart-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,78 @@
+/* Establecer estilos globales para resetear padding y margen en todos los elementos */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Establecer el color de fondo del cuerpo del sitio web utilizando un degradado radial */
+.background {
+    background: rgb(237, 242, 250);
+    background: radial-gradient(circle, rgba(237, 242, 250, 1) 0%, rgba(237, 242, 250, 1) 50%, rgba(237, 242, 250, 1) 100%);
+}
+
+/* Definir el espacio entre elementos secundarios dentro del contenedor 'container-titles' */
+.container-titles {
+    gap: 6.3rem;
+}
+
+/* Establecer dimensiones para las imágenes de productos */
+.img-product {
+    width: 96px;
+    height: 96px;
+}
+
+/* Cambiar la apariencia de los enlaces cuando se pasa el cursor sobre ellos */
+.info-products > a:hover {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Aplicar estilos a un ícono cuando se pasa el cursor sobre él */
+.icon-hover-danger:hover {
+    border-color: #000000 !important;
+    background-color: white !important;
+    color: black;
+}
+
+/* Definir estilos para un campo de entrada de cálculo */
+.input-calculo {
+    width: 100px;
+}
+
+section{
+    margin-top: 100px;
+}
+
+/* Cambiar el color de un ícono dentro de un elemento con la clase 'icon-hover-danger' cuando se pasa el cursor sobre él */
+.icon-hover-danger:hover i {
+    color: #000000 !important;
+}
+
+/* Aplicar estilos a los botones cuando se pasa el cursor sobre ellos */
+.btn:hover {
+    border-color: black;
+}
+
+/* Aplicar un color de fondo específico a un tipo de botón */
+.btn-1 {
+    background-color: #f59300;
+}
+
+/* Aplicar estilos a un botón específico cuando se pasa el cursor sobre él */
+.btn-2:hover {
+    border-color: black;
+}
+
+
