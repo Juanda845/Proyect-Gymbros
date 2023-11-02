@@ -59,7 +59,8 @@
                             require("../../Suministros/conexion.php");
 
                             // Realiza una consulta SQL para obtener los datos de productos
-                            $sql = "SELECT * FROM productos";
+                            $sql = "SELECT * FROM productos
+                            WHERE estado = (SELECT id FROM parametros WHERE valor = 'Activo')";
                             $resultado = $conexion->query($sql);
 
                             while ($producto = $resultado->fetch_assoc()) :
