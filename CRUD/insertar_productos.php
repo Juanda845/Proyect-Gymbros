@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cantidad = intval($_POST['cantidad']);
 
     // Directorio donde se guardarán las imágenes
-    $directorio_imagenes = '../Img';
+    $directorio_imagenes = '../Img/';
 
     // Verificar si se subió una imagen
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {

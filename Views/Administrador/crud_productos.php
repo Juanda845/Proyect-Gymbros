@@ -129,14 +129,16 @@ $nombre = $_SESSION['nombre'];
                                         <th><?php echo $resultado['nombre'] ?></th>
                                         <th><?php echo $resultado['precio'] ?></th>
                                         <th><?php echo $resultado['cantidad'] ?></th>
-                                        <th><img src="<?php echo $resultado['imagen']; ?>" alt="Imagen" width="100"></th>
+                                        <th><img src="../../Img/<?php echo $resultado['imagen'] ?>" alt="Imagen" width="50"></th>
                                         <th><?php echo $resultado['categoria'] ?></th>
                                         <th><?php echo $resultado['proveedor'] ?></th>
                                         <th><?php echo $resultado['estado'] ?></th>
                                         <th><?php echo $resultado['descripcion'] ?></th>
                                         <th>
-                                            <a class="btn btn-warning" href="../../Formularios/update_productos.php?id=<?php echo $resultado['id'] ?>"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></a>
-                                            <button class="btn btn-danger <?php echo ($resultado['estado'] == 'inactivo') ? 'inactivo' : ''; ?>" data-id="<?php echo $resultado['id'] ?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
+                                            <div class="d-flex gap-2">
+                                                <a class="btn btn-warning" href="../../Formularios/update_productos.php?id=<?php echo $resultado['id'] ?>"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></a>
+                                                <button class="btn btn-danger <?php echo ($resultado['estado'] == 'inactivo') ? 'inactivo' : ''; ?>" data-id="<?php echo $resultado['id'] ?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
+                                            </div>
                                         </th>
                                     </tr>
                                 <?php
