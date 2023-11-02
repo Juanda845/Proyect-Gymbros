@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const infoAlert = Swal.fire({
                 icon: 'info',
                 title: '¡ATENCIÓN USUARIOS!',
-                text: 'Próximamente incluiremos nuestra pasarela de pagos. Atentamente: ADSI-209 / Black Diamond',
+                text: 'Próximamente incluiremos nuestra pasarela de pagos. Atentamente: 11-2 / GYMBROS',
                 confirmButtonText: 'OK',
                 allowOutsideClick: false, // Permitir cerrar la alerta haciendo clic afuera
                 allowEscapeKey: false, // Permitir cerrar la alerta presionando la tecla Esc

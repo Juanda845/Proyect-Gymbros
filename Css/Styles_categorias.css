@@ -4,10 +4,16 @@
     margin: 0;
 }
 
-/* Establecer el color de fondo del cuerpo del sitio web utilizando un degradado radial */
-.background {
-    background: rgb(237, 242, 250);
-    background: radial-gradient(circle, rgba(237, 242, 250, 1) 0%, rgba(237, 242, 250, 1) 50%, rgba(237, 242, 250, 1) 100%);
+html {
+    height: 100%;
+}
+
+body {
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Estilos para el contenedor de la sección de productos */
@@ -16,10 +22,11 @@
 }
 
 /* Estilos para la tarjeta de producto */
-.card-container {
+.product-card {
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 20px;
+    text-align: center; /* Centra el contenido */
 }
 
 /* Estilos para el título del producto */
@@ -40,16 +47,31 @@
 }
 
 /* Estilos para el botón de agregar al carrito */
-.add-to-cart-button {
+.add-to-cart-btn {
     background-color: #007bff;
     color: #fff;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+/* Estilos para el icono en el botón */
+.add-to-cart-btn i {
+    margin-right: 5px; /* Ajusta la separación entre el icono y el texto */
 }
 
 /* Estilos cuando el cursor está sobre el botón de agregar al carrito */
-.add-to-cart-button:hover {
+.add-to-cart-btn:hover {
     background-color: #0056b3;
+}
+
+/* Estilos para la imagen del producto en las tarjetas */
+.product-image {
+    max-width: 160px;
+    max-height: 150px; /* Ajusta la altura máxima a tu preferencia */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
 }

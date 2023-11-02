@@ -45,13 +45,14 @@
         </nav>
 
         <!-- Vista de productos para agregar al carrito -->
-        <section class="my-5">
+        <section class="my-3">
             <div class="container">
                 <div class="row">
                     <!-- Productos -->
                     <div class="col-md-9">
-                        <h4 class="mb-3">Productos Disponibles</h4>
-                        <a href="../views/shopping-cart.php"><button class="btn btn-primary mb-3">Carrito de compras</button></a>
+                        <div class="card-header">
+                            <h3 class="mb-3">Productos Disponibles</h3>
+                        </div>
                         <!-- Lista de productos -->
                         <div class="row">
                             <?php
@@ -66,12 +67,12 @@
                                 <!-- Producto -->
                                 <div class="col-md-4 mb-4">
                                     <div class="card card-container">
-                                        <img src="../../Img/<?php echo $producto['imagen']; ?>" class="card-img-top" alt="<?php echo $producto['nombre']; ?>">
+                                        <img src="../../Img/<?php echo $producto['imagen']; ?>" class="card-img-top product-image" alt="<?php echo $producto['nombre']; ?>">
                                         <div class="card-body">
                                             <h5 class="card-title product-title"><?php echo $producto['nombre']; ?></h5>
                                             <p class="card-text product-info"><?php echo $producto['descripcion']; ?></p>
                                             <p class="card-text product-info">$<?php echo $producto['precio']; ?></p>
-                                            <button onclick="<?php echo isset($_SESSION['id_usuario']) ? "agregarAlCarrito('" . $producto['nombre'] . "', " . $producto['precio'] . ", '" . $producto['imagen'] . "', '" . $producto['descripcion'] . "');" : "window.location.href='../login.php'"; ?>" class="btn btn-primary">Agregar al Carrito</button>
+                                            <button onclick="<?php echo isset($_SESSION['id_usuario']) ? "agregarAlCarrito('" . $producto['nombre'] . "', " . $producto['precio'] . ", '" . $producto['imagen'] . "', '" . $producto['descripcion'] . "');" : "window.location.href='../login.php'"; ?>" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
                                         </div>
                                     </div>
                                 </div>
