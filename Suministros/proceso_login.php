@@ -12,7 +12,10 @@ if (isset($_POST['logueo'])) {
     if (mysqli_num_rows($resultado) > 0) {
         $usuario = mysqli_fetch_assoc($resultado);
 
-        if (password_verify($contraseña, $usuario['contraseña'])) {
+        if ($usuario['estado'] == 2) {
+            // Usuario inactivo, asigna un mensaje de error
+            $login_error = "Este usuario está inactivo.";
+        } elseif (password_verify($contraseña, $usuario['contraseña'])) {
             // Los datos son correctos, configura la sesión y redirige
             $_SESSION['id_usuario'] = $usuario['id'];
             $_SESSION['correo'] = $usuario['correo'];
@@ -36,6 +39,7 @@ if (isset($_POST['logueo'])) {
         }
     } else {
         // Usuario no encontrado
-        $login_error = "El correo ingresado no está registrado. Por favor, registrate si quieres continuar.";
+        $login_error = "El correo ingresado no está registrado. Por favor, regístrate si quieres continuar.";
     }
 }
+?>

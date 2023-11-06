@@ -16,6 +16,6 @@ body {
 }
 
 .img-small {
-    max-width: 100px; /* Cambia el tamaño a tu preferencia */
-    height: auto;
+    max-width: 200px; /* Cambia el tamaño a tu preferencia */
+    height: 100px;
 }

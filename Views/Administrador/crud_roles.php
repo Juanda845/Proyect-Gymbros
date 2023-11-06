@@ -101,17 +101,7 @@ $nombre = $_SESSION['nombre'];
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
-    <script>
-        $(document).ready(function() {
-            $('#table_responsive').DataTable({
-                "responsive": true, // Habilitar el modo responsive
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json" // Establecer el idioma a español
-                }
-            });
-        });
-    </script>
+    <script src="../../Js/data-table.js"></script>
 </body>
 
 </html>

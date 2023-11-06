@@ -1,13 +1,63 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-html{
-    height: 100%;
+/* Estilos para el primer div con clase .carousel-caption */
+.carousel-caption.d-block {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+.carousel-caption.d-block h1 {
+    font-size: 24px;
+    margin: 5px;
+}
+
+.carousel-caption.d-block p {
+    font-size: 16px;
+    margin: 5px;
+}
+
+/* Estilos para el segundo div con clase .carousel-caption */
+.carousel-caption.d-block+.carousel-item .carousel-caption {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.carousel-caption.d-block+.carousel-item .carousel-caption h1 {
+    font-size: 24px;
+    margin: 5px;
+}
+
+.carousel-caption.d-block+.carousel-item .carousel-caption p {
+    font-size: 16px;
+    margin: 5px;
+}
+
+/* Estilos para el tercer div con clase .carousel-caption */
+.carousel-caption.d-block+.carousel-item+.carousel-item .carousel-caption {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.carousel-caption.d-block+.carousel-item+.carousel-item .carousel-caption h1 {
+    font-size: 24px;
+    margin: 5px;
+}
+
+.carousel-caption.d-block+.carousel-item+.carousel-item .carousel-caption p {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.border-rounded-image {
+    border-radius: 10px;
+    /* Puedes ajustar el valor según tu preferencia */
 }

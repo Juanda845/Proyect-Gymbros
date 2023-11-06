@@ -16,7 +16,7 @@
     <body>
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="../login.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
+            <a class="navbar-brand" href="index.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
