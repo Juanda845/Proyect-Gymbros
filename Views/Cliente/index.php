@@ -13,7 +13,16 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark p-1">
-        <a class="navbar-brand" href="../login.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
+        <?php
+        session_start();
+        if (isset($_SESSION['id_usuario']) && $_SESSION['id_usuario'] !== null) {
+            echo '<a class="navbar-brand" href="#">';
+        } else {
+            echo '<a class="navbar-brand" href="../login.php">';
+        }
+        ?>
+        <img src="../../Img/logo.jpg" width="160" height="50">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +38,6 @@
                     <a class="nav-link mt-2" href="carrito.php"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i> CARRITO</a>
                 </li>
                 <?php
-                session_start();
                 if (isset($_SESSION['id_usuario'])) {
                     // El usuario está logueado, muestra el botón de "Cerrar Sesión" con el estilo deseado
                     echo '<li class="nav-item"><a class="nav-link mb-1" href="../../Suministros/logout.php"><button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-door-open"></i> Cerrar Sesión</button></a></li>';
@@ -78,7 +86,21 @@
         </div>
     </div>
 
-    
+    <div class="container my-3">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <h1 class="text-center title-bienvenida">BIENVENIDOS A GYMBROS</h1>
+                <p class="text-justify">
+                    ¡Bienvenido a Gymbros, tu aliado en la búsqueda de una vida más saludable y enérgica! Ofrecemos una amplia variedad de suplementos de alta calidad para impulsar tu acondicionamiento físico y bienestar. Explora nuestros productos, obtén consejos nutricionales valiosos y descubre una rutina de 6 días para principiantes. En Gymbros, no solo vendemos suplementos, sino que también proporcionamos información y apoyo para tu toma de decisiones. Únete a nuestra comunidad y juntos construyamos un camino hacia un estilo de vida activo y saludable. ¡Bienvenido a Gymbros, donde tu salud es nuestra prioridad número uno!
+                </p>
+                <a href="../register.php"><button class="btn btn-primary mb-2">¡UNETE AHORA!</button></a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <img src="../../Img/gym-mancuerna.jpg" alt="image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

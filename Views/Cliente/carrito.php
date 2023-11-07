@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
-    header("location:../login.php"); // Redirige al usuario al inicio de sesión
+    header("location:../login.php");
     exit();
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,37 +15,31 @@ if (!isset($_SESSION['id_usuario'])) {
     <title>Carrito de compras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../../Css/Styles_carrito.css">
 </head>
 
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="../login.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-1">
+        <a class="navbar-brand" href="../Cliente/index.php"><img src="../../Img/logo.jpg" width="160" height="50"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto d-flex gap-3">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="categorias.php"><i class="fa-solid fa-dumbbell fa-xl" style="color: #ffffff;"></i></a>
+                    <a class="nav-link mt-2" href="categorias.php"><i class="fa-solid fa-dumbbell fa-xl" style="color: #ffffff;"></i> PRODUCTOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="perfil.php"><i class="fa-solid fa-circle-user fa-xl" style="color: #ffffff;"></i></a>
+                    <a class="nav-link mt-2" href="perfil.php"><i class="fa-solid fa-circle-user fa-xl" style="color: #ffffff;"></i> PERFIL</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="carrito.php"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i></a>
-                </li>
+                <?php
+                if (isset($_SESSION['id_usuario'])) {
+                    // El usuario está logueado, muestra el botón de "Cerrar Sesión" con el estilo deseado
+                    echo '<li class="nav-item"><a class="nav-link mb-1" href="../../Suministros/logout.php"><button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-door-open"></i> Cerrar Sesión</button></a></li>';
+                }
+                ?>
             </ul>
-        </div>
-        <div class="navbar-nav ms-auto d-flex gap-5">
-            <?php
-            session_start();
-            if (isset($_SESSION['id_usuario'])) {
-                // El usuario está logueado, muestra el botón de "Cerrar Sesión"
-                echo '<a class="nav-link" href="../../Suministros/logout.php"><button type="button" class="btn btn-outline-danger">Cerrar Sesión</button></a>';
-            }
-            ?>
         </div>
     </nav>
 

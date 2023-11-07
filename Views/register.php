@@ -37,13 +37,13 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6 mb-5 mt-4">
+                                    <div class="col-md-6 mb-5 mt-2">
                                         <div class="form-group text-start">
                                             <label for="Correo" class="form-label">Correo</label>
                                             <input type="email" class="form-control" name="correo" id="Correo" placeholder="Correo" value="<?php echo isset($_GET['correo']) ? $_GET['correo'] : ''; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-5 mt-4">
+                                    <div class="col-md-6 mb-5 mt-2">
                                         <div class="form-group text-start position-relative">
                                             <label for="Contraseña" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" name="contraseña" id="Contraseña" placeholder="Contraseña" required>
@@ -51,10 +51,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-5 mt-3 text-center d-flex justify-content-center gap-3">
-                                    <button type="submit" class="btn btn-outline-primary col-3">Registrarse</button>
-                                    <a class="nav-link" href="./login.php"><button type="button" class="btn btn-outline-danger col-3">Cancelar</a>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-5 mt-2">
+                                        <div class="form-group text-start">
+                                            <button type="submit" class="btn btn-outline-primary form-control">Registrarse</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-5 mt-2">
+                                        <div class="form-group text-start position-relative">
+
+                                            <a class="nav-link" href="./login.php"><button type="button" class="btn btn-outline-danger form-control">Cancelar</a>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

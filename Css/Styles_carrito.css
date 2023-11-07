@@ -4,10 +4,6 @@
     margin: 0;
 }
 
-html{
-    height: 100%;
-}
-
 body {
     background: rgb(128, 128, 128);
     background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
@@ -49,10 +45,6 @@ body {
 /* Definir estilos para un campo de entrada de cálculo */
 .input-calculo {
     width: 100px;
-}
-
-section{
-    margin-top: 100px;
 }
 
 /* Cambiar el color de un ícono dentro de un elemento con la clase 'icon-hover-danger' cuando se pasa el cursor sobre él */

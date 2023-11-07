@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+body{
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 /* Estilos para el primer div con clase .carousel-caption */
 .carousel-caption.d-block {
     text-align: center;
@@ -60,4 +68,8 @@
 .border-rounded-image {
     border-radius: 10px;
     /* Puedes ajustar el valor según tu preferencia */
+}
+
+.title-bienvenida{
+    font-size: 45px;
 }
