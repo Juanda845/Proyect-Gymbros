@@ -10,7 +10,7 @@ $sql = "UPDATE categorias SET
         estado='" . $estado . "' WHERE id = '" . $id . "'";
 
 if ($resultado = $conexion->query($sql)) {
-    header("location:../Views/Administrador/crud_categorias.php?edited=true");
+    header("location:../Views/Administrador/crud_categorias.php?edited_categoria=true");
 } else {
     echo "Datos no editados";
 }

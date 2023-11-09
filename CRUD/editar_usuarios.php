@@ -16,7 +16,7 @@ $sql = "UPDATE usuarios SET
         estado='" . $estado . "' WHERE id = '" . $id . "'";
 
 if ($resultado = $conexion->query($sql)) {
-    header("location:../Views/Administrador/crud_usuarios.php?edited=true");
+    header("location:../Views/Administrador/crud_usuarios.php?edited_usuarios=true");
 } else {
     echo "Datos no editados";
 }

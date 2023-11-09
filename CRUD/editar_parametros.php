@@ -8,7 +8,7 @@ $sql = "UPDATE parametros SET
         valor='" . $valor . "' WHERE id = '" . $id . "'";
 
 if ($resultado = $conexion->query($sql)) {
-    header("location:../Views/Administrador/crud_parametros.php?edited=true");
+    header("location:../Views/Administrador/crud_parametros.php?edited_parametro=true");
 } else {
     echo "Datos no editados";
 }

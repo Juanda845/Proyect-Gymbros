@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado === TRUE) {
-        header("location:../Views/Administrador/crud_productos.php?edited=true");
+        header("location:../Views/Administrador/crud_productos.php?edited_producto=true");
     } else {
         echo "Datos no actualizados";
     }

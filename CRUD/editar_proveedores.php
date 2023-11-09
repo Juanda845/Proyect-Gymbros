@@ -16,7 +16,7 @@ $sql = "UPDATE proveedores SET
         estado='" . $estado . "' WHERE id = '" . $id . "'";
 
 if ($resultado = $conexion->query($sql)) {
-    header("location:../Views/Administrador/crud_proveedores.php?edited=true");
+    header("location:../Views/Administrador/crud_proveedores.php?edited_proveedores=true");
 } else {
     echo "Datos no editados";
 }

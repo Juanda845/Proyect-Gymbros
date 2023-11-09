@@ -31,7 +31,7 @@ if (mysqli_num_rows($resultado) > 0) {
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado === TRUE) {
-        header("location:../Views/Administrador/crud_usuarios.php?added=true");
+        header("location:../Views/Administrador/crud_usuarios.php?added_usuarios=true");
     } else {
         echo "Datos no insertados";
     }

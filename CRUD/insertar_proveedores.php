@@ -12,7 +12,7 @@ $sql = "INSERT INTO proveedores(nombre, direccion, telefono, producto, estado) V
 $resultado = mysqli_query($conexion, $sql);
 
 if ($resultado === TRUE) {
-    header("location:../Views/Administrador/crud_proveedores.php?added=true");
+    header("location:../Views/Administrador/crud_proveedores.php?added_proveedores=true");
 } else {
     echo "Datos no insertados";
 }
