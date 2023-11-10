@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-body{
+body {
     background: rgb(128, 128, 128);
     background: linear-gradient(0deg, rgba(128, 128, 128, 1) 0%, rgba(255, 220, 145, 1) 100%);
     background-repeat: no-repeat;
@@ -70,6 +70,11 @@ body{
     /* Puedes ajustar el valor según tu preferencia */
 }
 
-.title-bienvenida{
+.title-bienvenida {
     font-size: 45px;
+}
+
+/* Estilo para ocultar el contenido en elementos con la clase 'active' */
+.nav-item.active .nav-item-content {
+    display: none;
 }
