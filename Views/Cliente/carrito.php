@@ -4,8 +4,9 @@ if (!isset($_SESSION['id_usuario'])) {
     header("location:../login.php");
     exit();
 }
-
 ?>
+
+<link rel="stylesheet" href="../../Css/Styles_carrito.css">
 
 <!-- Sección del Carrito de Compras -->
 <section class="mt-5">

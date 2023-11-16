@@ -147,11 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'COMPRA REALIZADA',
             text: 'Su pedido será entregado pronto.',
             confirmButtonText: 'OK',
-            allowOutsideClick: false, // No permitir cerrar la alerta haciendo clic afuera
-            allowEscapeKey: false, // No permitir cerrar la alerta presionando la tecla Esc
+            allowOutsideClick: false,
+            allowEscapeKey: false,
         }).then(() => {
             // Redirigir a index.php después de mostrar el mensaje de éxito
             window.location.href = 'index.php';
+
+            // Limpiar el carrito en el almacenamiento local
+            localStorage.removeItem('carrito');
         });
     }
 

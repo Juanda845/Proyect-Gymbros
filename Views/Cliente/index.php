@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="container my-3">
+<div class="container mt-5 mb-5">
     <div class="row align-items-center">
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <h1 class="text-center title-bienvenida">BIENVENIDOS A GYMBROS</h1>
@@ -54,6 +54,42 @@
     </div>
 </div>
 
+<hr>
+
+<div class="container mt-5">
+    <div class="row">
+        <h1 class="display-3">Nuestra Tienda</h1>
+        <p class="text-justify">
+            En nuestra tienda de suplementos deportivos, ofrecemos una amplia variedad de productos para ayudarte a alcanzar tus objetivos de fitness. Tenemos suplementos proteicos, quemadores de grasa, barras de proteínas y mucho más. Todos nuestros productos son de alta calidad y seleccionados por nuestro equipo de expertos en nutrición. Explora nuestra tienda en línea o en nuestro gimnasio.
+        </p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php
+        require("../../Suministros/conexion.php");
+
+        // Realiza una consulta SQL para obtener los datos de los primeros 3 productos activos
+        $sql = "SELECT * FROM productos
+            WHERE estado = (SELECT id FROM parametros WHERE valor = 'Activo')
+            LIMIT 3";
+        $resultado = $conexion->query($sql);
+
+        while ($producto = $resultado->fetch_assoc()) :
+        ?>
+            <!-- Producto -->
+            <div class="col">
+                <div class="card mb-4" style="height: 420px;"> <!-- Ajusta los valores según tus necesidades -->
+                    <img src="../../Img/<?php echo $producto['imagen']; ?>" class="card-img-top mt-2 img-fluid" style="height: 250px;" alt="<?php echo $producto['nombre']; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
+                        <p class="card-text"><?php echo $producto['descripcion']; ?></p>
+                        <a href="categorias.php" class="btn btn-primary form-control">Ver mas . . . <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
