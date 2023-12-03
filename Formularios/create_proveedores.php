@@ -66,7 +66,17 @@ if (!isset($_SESSION['id_usuario'])) {
                                 <div class="col-12 col-md-6">
                                     <div class="mb-5 col-12 mx-auto">
                                         <label for="Producto" class="form-label">Producto</label>
-                                        <input type="text" class="form-control" name="producto" id="Producto" placeholder="Producto" required>
+                                        <select id="Producto" class="form-select" name="producto" required>
+                                            <option selected disabled>Seleccionar Producto</option>
+                                            <?php
+                                            include("../Suministros/conexion.php");
+
+                                            $sql = $conexion->query("SELECT * FROM categorias");
+                                            while ($resultado = $sql->fetch_assoc()) {
+                                                echo "<option value='" . $resultado['id'] . "'>" . $resultado['nombre'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="mb-5 col-12 mx-auto">
                                         <label for="Estado" class="form-label">Estado</label>

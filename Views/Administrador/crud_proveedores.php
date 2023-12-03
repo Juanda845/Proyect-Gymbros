@@ -68,10 +68,11 @@ include('../../Suministros/header-admin.php');
                             }
 
                             $sql = $conexion->query(
-                                "SELECT proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.telefono, proveedores.producto, parametros.valor AS estado
-                                        FROM proveedores
-                                        INNER JOIN parametros ON proveedores.estado = parametros.id
-                                    "
+                                "SELECT proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.telefono, categorias.nombre AS producto, parametros.valor AS estado
+                                FROM proveedores
+                                INNER JOIN parametros ON proveedores.estado = parametros.id
+                                INNER JOIN categorias ON proveedores.producto = categorias.id
+                                "
                             );
                             while ($resultado = $sql->fetch_assoc()) {
                             ?>

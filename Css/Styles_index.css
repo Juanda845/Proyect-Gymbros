@@ -78,3 +78,26 @@ body {
 .nav-item.active .nav-item-content {
     display: none;
 }
+
+section {
+    background: rgb(128, 128, 128);
+    background: linear-gradient(0deg, rgba(255, 220, 145, 1) 0%, rgba(128, 128, 128, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Estilos para la imagen del producto */
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para la imagen del producto en las tarjetas */
+.product-image {
+    max-width: 160px;
+    max-height: 150px;
+    /* Ajusta la altura máxima a tu preferencia */
+    margin: 0 auto;
+    /* Centra la imagen horizontalmente */
+}

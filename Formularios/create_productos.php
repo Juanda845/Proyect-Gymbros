@@ -87,9 +87,12 @@ if (!isset($_SESSION['id_usuario'])) {
                                         <select id="proveedor" class="form-select" name="proveedor" required>
                                             <option selected disabled>Seleccionar Proveedor</option>
                                             <?php
-                                            $sql = $conexion->query("SELECT * FROM proveedores");
+                                            // Modificamos la consulta para incluir información sobre las categorías de los productos de cada proveedor
+                                            $sql = $conexion->query("SELECT proveedores.id AS proveedor_id, proveedores.nombre AS proveedor_nombre, categorias.nombre AS categoria_nombre
+                                            FROM proveedores
+                                            INNER JOIN categorias ON proveedores.producto = categorias.id");
                                             while ($resultado = $sql->fetch_assoc()) {
-                                                echo "<option value='" . $resultado['id'] . "'>" . $resultado['nombre'] . "</option>";
+                                                echo "<option value='" . $resultado['proveedor_id'] . "'>" . $resultado['proveedor_nombre'] . " - " . $resultado['categoria_nombre'] . "</option>";
                                             }
                                             ?>
                                         </select>

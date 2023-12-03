@@ -27,7 +27,7 @@
                                 <form action="" method="POST">
                                     <h2 class="fw-bold mb-3 text-uppercase">INICIO DE SESIÓN</h2>
                                     <a href="./Cliente/index.php"><img src="../Img/logo.jpg" alt="logo" class="image-logo mb-5"></a>
-                                    <h6 class="text-white-50 mb-5">¡Por favor, introduce tu usuario y contraseña!</h6>
+                                    <h6 class="text-white-50 mb-5">¡Por favor, introduce tu correo y contraseña!</h6>
 
                                     <div class="mb-4 mt-3">
                                         <input type="email" class="form-control" name="correo" id="Correo" placeholder="Correo" required>

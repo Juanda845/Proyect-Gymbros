@@ -1,5 +1,6 @@
 <?php include('../../Suministros/header.php'); ?>
 
+<link rel="stylesheet" href="../../Css/Styles_index.css">
 <div class="col-12">
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -16,7 +17,7 @@
                 <div class="carousel-caption d-block">
                     <button class="btn btn-outline-warning showSweetAlert"><strong>¡GYMBROS 🏋🏻‍♀️!</strong></button>
                     <h1>DE PARTE DE GYMBROS...</h1>
-                    <p>LOS LOGROS NO SON MAGIA - SON TRABAJO DURO Y DEDICACIÓN. 💪🏻</p>
+                    <p>LO QUE NO TE MATA - TE HACE MÁS FUERTE. 💪🏻</p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -54,42 +55,42 @@
     </div>
 </div>
 
-<hr>
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            <h1 class="display-3">Nuestra Tienda</h1>
+            <p class="text-justify">
+                En nuestra tienda de suplementos deportivos, ofrecemos una amplia variedad de productos para ayudarte a alcanzar tus objetivos de fitness. Tenemos suplementos proteicos, quemadores de grasa, barras de proteínas y mucho más. Todos nuestros productos son de alta calidad y seleccionados por nuestro equipo de expertos en nutrición. Explora nuestra tienda en línea o en nuestro gimnasio.
+            </p>
+        </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <h1 class="display-3">Nuestra Tienda</h1>
-        <p class="text-justify">
-            En nuestra tienda de suplementos deportivos, ofrecemos una amplia variedad de productos para ayudarte a alcanzar tus objetivos de fitness. Tenemos suplementos proteicos, quemadores de grasa, barras de proteínas y mucho más. Todos nuestros productos son de alta calidad y seleccionados por nuestro equipo de expertos en nutrición. Explora nuestra tienda en línea o en nuestro gimnasio.
-        </p>
-    </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <?php
+            require("../../Suministros/conexion.php");
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php
-        require("../../Suministros/conexion.php");
-
-        // Realiza una consulta SQL para obtener los datos de los primeros 3 productos activos
-        $sql = "SELECT * FROM productos
+            // Realiza una consulta SQL para obtener los datos de los primeros 3 productos activos
+            $sql = "SELECT * FROM productos
             WHERE estado = (SELECT id FROM parametros WHERE valor = 'Activo')
-            LIMIT 3";
-        $resultado = $conexion->query($sql);
+            LIMIT 4";
+            $resultado = $conexion->query($sql);
 
-        while ($producto = $resultado->fetch_assoc()) :
-        ?>
-            <!-- Producto -->
-            <div class="col">
-                <div class="card mb-4" style="height: 420px;"> <!-- Ajusta los valores según tus necesidades -->
-                    <img src="../../Img/<?php echo $producto['imagen']; ?>" class="card-img-top mt-2 img-fluid" style="height: 250px;" alt="<?php echo $producto['nombre']; ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
-                        <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                        <a href="categorias.php" class="btn btn-primary form-control">Ver mas . . . <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+            while ($producto = $resultado->fetch_assoc()) :
+            ?>
+                <!-- Producto -->
+                <div class="col mb-4">
+                    <div class="card text-bg-dark h-100">
+                        <img src="../../Img/<?php echo $producto['imagen']; ?>" class="card-img-top product-image mt-3" alt="<?php echo $producto['nombre']; ?>">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title product-title"><?php echo $producto['nombre']; ?></h5>
+                            <p class="card-text product-info"><?php echo $producto['descripcion']; ?></p>
+                            <a href="categorias.php" class="btn btn-primary mt-auto">Ver mas . . . <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endwhile; ?>
+            <?php endwhile; ?>
+        </div>
     </div>
-</div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
